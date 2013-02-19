@@ -1,0 +1,40 @@
+module part1(run) {
+    simple function iseven(&I: integer): logical {
+        if ((&I \ 2) = 0)
+            return (1B)
+        else
+            return (0B);
+    };
+
+    procedure run() {
+        local
+        &COUNT: integer,
+        &EVENOUT: integer,
+        &ODDOUT: integer,
+        &IN: integer,
+        &INPUTFI: integer;
+
+        &COUNT   = 0;
+        &INPUTFI = open(|INPUT.NUMBERS|);
+        &EVENOUT = create(|EVEN.NUMBERS|);
+        &ODDOUT  = create(|ODD.NUMBERS|);
+
+        if (&INPUTFI = -1) {
+            write() |Cannot open the input file.|, '\n';
+        } else {
+            read(&INPUTFI) &IN;
+            while (&IN > 0) {
+                if (iseven(&IN)) {
+                    write(&EVENOUT) &IN, '\n';
+                } else {
+                    write(&ODDOUT) &IN, '\n';
+                };
+                read(&INPUTFI) &IN;
+                &COUNT = &COUNT + 1;
+                if (&COUNT = 100) {
+                    &IN = -1;
+                };
+            };
+        };
+    };
+}

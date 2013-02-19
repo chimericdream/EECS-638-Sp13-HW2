@@ -4,6 +4,7 @@ build:
 	@echo "## Bill Parrott"
 	@echo "## Homework #2\n"
 
+	@make -B clean
 	@make -B part1
 	@make -B part2
 
@@ -15,7 +16,7 @@ build:
 part1:
 	@echo "## Building Homework 2, Part 1"
 
-	@opsr2 part1.ops
+	@opsr2 part1.ops > /dev/null
 	@echo "Compiling part1.ops with opsr2"
 	@echo "................Complete\n"
 
@@ -40,30 +41,39 @@ part1:
 part2:
 	@echo "## Building Homework 2, Part 2"
 
-	@opsr2 part21.ops
+#	@opsr2 part21.ops > /dev/null
 	@echo "Compiling part21.ops with opsr2"
 	@echo "................Complete\n"
 
-	@opsr2 part22.ops
+#	@opsr2 part22.ops
 	@echo "Compiling part22.ops with opsr2"
 	@echo "................Complete\n"
 
-	@cc -c part21.s
+#	@cc -c part21.s
 	@echo "Compiling part21.s to part21.o with cc"
 	@echo "................Complete\n"
 
-	@cc -c part22.s
+#	@cc -c part22.s
 	@echo "Compiling part22.s to part22.o with cc"
 	@echo "................Complete\n"
 
-	@cp /apps/opsr2/lib/shell.o ./
-	@cp /apps/opsr2/lib/shellcr.o ./
-	@cp /apps/opsr2/lib/rwbnolnk.o ./
-	@cp /apps/opsr2/lib/opslib.a ./
-	@cp /apps/opsr2/lib/startup.o ./
+#	@cp /apps/opsr2/lib/shell.o ./
+#	@cp /apps/opsr2/lib/shellcr.o ./
+#	@cp /apps/opsr2/lib/rwbnolnk.o ./
+#	@cp /apps/opsr2/lib/opslib.a ./
+#	@cp /apps/opsr2/lib/startup.o ./
 	@echo "Copying required files from /apps/opsr2/lib"
 	@echo "................Complete\n"
 
-	@cc part21.o part22.o shell.o shellcr.o rwbnolnk.o opslib.a startup.o -lm -o part1
+#	@cc part21.o part22.o shell.o shellcr.o rwbnolnk.o opslib.a startup.o -lm -o part1
 	@echo "Compiling final output file for part 2"
+	@echo "................Complete\n"
+
+################################################################################
+
+clean:
+	@rm -f part1 part1.s part1.o part1.syn
+#	@rm -f part2 part21.s part22.s part21.o part22.o part21.syn part22.syn
+	@rm -f shell.o shellcr.o rwbnolnk.o opslib.a startup.o
+	@echo "## Cleaning files from previous makes"
 	@echo "................Complete\n"
