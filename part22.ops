@@ -1,0 +1,25 @@
+module part22(run) {
+    use part21;
+
+    global
+    &EVENOUT: integer,
+    &ODDOUT: integer;
+
+    rule WriteEv  {&1 (EV) --> write(&EVENOUT) &1.val, '\n';};
+    rule WriteOd  {&1 (OD) --> write(&ODDOUT)  &1.val, '\n';};
+
+    procedure run() {
+        local &I: integer;
+
+        call runpart21();
+
+        &EVENOUT = create(|EVEN2.NUMBERS|);
+        &ODDOUT  = create(|ODD2.NUMBERS|);
+
+        &I = 1;
+        while (&I <= cssize()) {
+            fire &I;
+            &I = &I + 1;
+        };
+    };
+}

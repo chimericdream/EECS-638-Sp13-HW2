@@ -1,0 +1,39 @@
+module part21() {
+    type EV  = element(val:integer);
+    type OD  = element(val:integer);
+
+    simple function iseven(&I: integer): logical {
+        if ((&I \ 2) = 0)
+            return (1B)
+        else
+            return (0B);
+    };
+
+    procedure runpart21() {
+        local
+        &COUNT: integer,
+        &IN: integer,
+        &INPUTFI: integer;
+
+        &COUNT   = 0;
+        &INPUTFI = open(|INPUT.NUMBERS|);
+
+        if (&INPUTFI = -1) {
+            write() |Cannot open the input file.|, '\n';
+        } else {
+            read(&INPUTFI) &IN;
+            while (&IN > 0) {
+                if (iseven(&IN))
+                    make (EV val=&IN)
+                else
+                    make (OD val=&IN);
+
+                read(&INPUTFI) &IN;
+                &COUNT = &COUNT + 1;
+                if (&COUNT = 100) {
+                    &IN = -1;
+                };
+            };
+        };
+    };
+}
