@@ -7,3 +7,8 @@ This is the repository for Bill Parrott's submission for the [Introduction to Ex
 There is a makefile included with this submission that copies the necessary OPS/R2 files and compiles both parts of the assignment.
 
 To compile the program, simply run `make`.
+
+### Running the program
+To run part 1 of the assignment, run `./part1` after compiling. The output for part 1 is stored in the files `EVEN.NUMBERS` and `ODD.NUMBERS`.
+
+To run part 2 of the assignment, run `./part2` after compiling. The output for part 2 is stored in the files `EVEN2.NUMBERS` and `ODD2.NUMBERS`.
